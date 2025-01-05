@@ -7,7 +7,8 @@ require('dotenv').config(); // Carrega as variáveis de ambiente do .env
 // Importando as rotas
 const tenisRoutes = require('./routes/tenisRoutes');
 const vendaRoutes = require('./routes/vendaRoutes'); // Corrigido para o nome correto do arquivo
-
+const pagamentoPrazoRoutes = require("./routes/pagamentoprazoroutes");
+const dashboardRoutes = require('./routes/dashboardRoutes'); 
 const app = express();
 const port = 3000;
 
@@ -71,10 +72,12 @@ app.delete('/api/tenis/:id', async (req, res) => {
   }
 });
 
+
 // Usando as rotas de vendas
 app.use('/vendas', vendaRoutes);
 app.use('/api/tenis', tenisRoutes);
-app.use('/dashboard', require('./routes/dashboardRoutes'));
+app.use('/api/dashboard', require('./routes/dashboardRoutes'));
+app.use("/api", pagamentoPrazoRoutes);
   // Certifique-se de que está utilizando a rota corretamente
 
 // Iniciando o servidor

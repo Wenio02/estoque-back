@@ -1,17 +1,16 @@
-// src/controllers/dashboardController.js
+const dashboardService = require('../services/dashboardService');
 
-const getDashboardData = (req, res) => {
-    // Aqui você pode obter dados do banco de dados ou enviar dados estáticos para teste
-    const dashboardData = {
-      estoque: 100,  // Exemplo de dados
-      vendasRealizadas: 50,  // Exemplo de dados
-      pagamentosPendentes: 10,  // Exemplo de dados
-    };
-  
-    res.json(dashboardData);  // Retorna os dados como resposta
-  };
-  
-  module.exports = {
-    getDashboardData,
-  };
-  
+// Função para buscar dados do dashboard
+const getDashboardData = async (req, res) => {
+  try {
+    const data = await dashboardService.getDashboardDataFromDb();
+    res.status(200).json(data); // Retorna os dados para o frontend
+  } catch (err) {
+    console.error('Erro ao buscar dados do dashboard', err);
+    res.status(500).json({ error: 'Erro ao buscar dados do dashboard' });
+  }
+};
+
+module.exports = {
+  getDashboardData,
+};
