@@ -1,5 +1,5 @@
 const { format } = require("date-fns");
-const PagamentoPrazoService = require("../services/pagamentoprazoservice");
+const PagamentoPrazoService = require("../services/pagamentoPrazoService");
 
 class PagamentoPrazoController {
   static async registrarPagamento(req, res) {

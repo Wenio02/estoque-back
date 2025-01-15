@@ -24,7 +24,7 @@ exports.getTenisById = async (id) => {
 
 exports.deleteTenis = async (id) => {
   try {
-    const tenis = await Tenis.findByPk(id); // Encontrar o tênis pelo ID
+    const tenis = await tenis.findByPk(id); // Encontrar o tênis pelo ID
     if (tenis) {
       await tenis.destroy(); // Excluir o tênis encontrado
       return tenis; // Retorna o tênis excluído, se encontrado
